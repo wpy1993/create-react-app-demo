@@ -1,4 +1,4 @@
-'use strict';
+
 
 const path = require('path');
 const fs = require('fs');
@@ -20,6 +20,8 @@ const publicUrlOrPath = getPublicUrlOrPath(
   require(resolveApp('package.json')).homepage,
   process.env.PUBLIC_URL
 );
+
+console.log('path is ----', publicUrlOrPath)
 
 const buildPath = process.env.BUILD_PATH || 'build';
 

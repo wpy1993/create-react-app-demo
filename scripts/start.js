@@ -1,4 +1,4 @@
-'use strict';
+
 
 // Do this as the first thing so that any code reading it knows the right env.
 process.env.BABEL_ENV = 'development';
@@ -116,7 +116,7 @@ checkBrowsers(paths.appPath, isInteractive)
     // Launch WebpackDevServer.
     devServer.startCallback(() => {
       if (isInteractive) {
-        clearConsole();
+        // clearConsole();
       }
 
       if (env.raw.FAST_REFRESH && semver.lt(react.version, '16.10.0')) {

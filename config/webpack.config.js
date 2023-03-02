@@ -1,4 +1,4 @@
-'use strict';
+
 
 const fs = require('fs');
 const path = require('path');
@@ -27,6 +27,7 @@ const ForkTsCheckerWebpackPlugin =
 const ReactRefreshWebpackPlugin = require('@pmmmwh/react-refresh-webpack-plugin');
 
 const createEnvironmentHash = require('./webpack/persistentCache/createEnvironmentHash');
+// const WebpackDeadcodePlugin = require('webpack-deadcode-plugin');
 
 // Source maps are resource heavy and can cause out of memory issue for large source files.
 const shouldUseSourceMap = process.env.GENERATE_SOURCEMAP !== 'false';
@@ -412,6 +413,7 @@ module.exports = function (webpackEnv) {
                   'babel-preset-react-app/webpack-overrides'
                 ),
                 presets: [
+                  // ['@bable/preset-env', {modules: false}],
                   [
                     require.resolve('babel-preset-react-app'),
                     {
@@ -445,6 +447,7 @@ module.exports = function (webpackEnv) {
                 configFile: false,
                 compact: false,
                 presets: [
+                  // ['@bable/preset-env', {modules: false}],
                   [
                     require.resolve('babel-preset-react-app/dependencies'),
                     { helpers: true },
@@ -563,6 +566,11 @@ module.exports = function (webpackEnv) {
       ].filter(Boolean),
     },
     plugins: [
+      // isEnvDevelopment && new WebpackDeadcodePlugin({
+      //   patterns: [
+      //     'src/**/*.(js|jsx|css|scss)'
+      //   ]
+      // }),
       // Generates an `index.html` file with the <script> injected.
       new HtmlWebpackPlugin(
         Object.assign(
